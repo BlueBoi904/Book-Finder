@@ -3,8 +3,8 @@ import React, { useState } from "react";
 import "../styles/app.scss";
 import { DataContext } from "./Context";
 import Books from "./Books";
-// import Search from "./Search.js";
-// import Footer from "./Footer";
+import Search from "./Search";
+import Footer from "./Footer";
 import DarkMode from "./DarkMode";
 
 export default function App() {
@@ -18,9 +18,9 @@ export default function App() {
     >
       <DarkMode />
       <div className="app">
-        {/* <Search /> */}
+        <Search />
         <Books />
-        {/* <Footer /> */}
+        <Footer />
       </div>
     </DataContext.Provider>
   );

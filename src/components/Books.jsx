@@ -1,32 +1,22 @@
 import React, { useContext } from "react";
 
-import BookItem from "./BookItem";
-import { DataContext } from "./Context";
-import Spinner from "./Spinner";
-
 import "../styles/books.scss";
+import { DataContext } from "./Context";
+import Spinner from "react-bootstrap/Spinner";
 
 export default function Books() {
   const { data, loading } = useContext(DataContext);
-  const books = data.items || [];
-
-  if (data.kind && data.totalItems === 0) {
+  if (loading) {
     return (
-      <span className="holderText">☹ Nothing Found! Try Another Query.</span>
+      <Spinner animation="border" role="status">
+        <span className="sr-only">Loading...</span>
+      </Spinner>
     );
   }
-
+  console.log(data);
   return (
-    <div className="books">
-      {loading ? (
-        <Spinner />
-      ) : !books.length ? (
-        <span className="holderText">
-          ☹ Nothing Here Yet - Try Searching For A Book!
-        </span>
-      ) : (
-        <BookItem books={books} />
-      )}
-    </div>
+    <span className="holderText">
+      Nothing here yet! Try searching for a book.
+    </span>
   );
 }
